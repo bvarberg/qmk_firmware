@@ -1,6 +1,56 @@
 // M60-A layout
 #include QMK_KEYBOARD_H
 
+enum combos {
+	// ( )
+	CBOLPRN,
+	CBORPRN,
+	// [ ]
+  CBOLBRC,
+  CBORBRC,
+  // { }
+  CBOLCBR,
+  CBORCBR,
+	// < >
+  CBOLTAG,
+  CBORTAG,
+	// = -
+  CBO_EQL,
+  CBO_MIN
+};
+
+const uint16_t PROGMEM lparen_combo[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM rparen_combo[] = {KC_J, KC_K, COMBO_END};
+
+const uint16_t PROGMEM lbracket_combo[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM rbracket_combo[] = {KC_K, KC_L, COMBO_END};
+
+const uint16_t PROGMEM lcurly_combo[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM rcurly_combo[] = {KC_L, KC_SCOLON, COMBO_END};
+
+const uint16_t PROGMEM langle_combo[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM rangle_combo[] = {KC_J, KC_L, COMBO_END};
+
+const uint16_t PROGMEM equals_combo[] = {KC_A, KC_F, COMBO_END};
+const uint16_t PROGMEM minus_combo[] = {KC_J, KC_SCOLON, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [CBOLPRN] = COMBO(lparen_combo, KC_LPRN),
+  [CBORPRN] = COMBO(rparen_combo, KC_RPRN),
+
+	[CBOLBRC] = COMBO(lbracket_combo, KC_LBRACKET),
+  [CBORBRC] = COMBO(rbracket_combo, KC_RBRACKET),
+
+	[CBOLCBR] = COMBO(lcurly_combo, KC_LEFT_CURLY_BRACE),
+  [CBORCBR] = COMBO(rcurly_combo, KC_RIGHT_CURLY_BRACE),
+
+	[CBOLTAG] = COMBO(langle_combo, KC_LEFT_ANGLE_BRACKET),
+  [CBORTAG] = COMBO(rangle_combo, KC_RIGHT_ANGLE_BRACKET),
+
+	[CBO_EQL] = COMBO(equals_combo, KC_EQUAL),
+	[CBO_MIN] = COMBO(minus_combo, KC_MINUS),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Default layer
